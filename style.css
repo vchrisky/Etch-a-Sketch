@@ -26,6 +26,6 @@ body{
 
 .grid-square-hover{
     /* border: 1px solid #000; */
-    background-color: orangered;
+    background-color: rgb(10, 10, 10);
     flex-grow: 1;
 }
