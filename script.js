@@ -19,7 +19,7 @@ let numColumns = 16;
 let numRows = 16;
 
 createGrid(numColumns, numRows);
-displaySides.textContent = `GRID: ${numColumns} * ${numRows}`;
+displaySides.textContent = `GRID: ${numColumns} x ${numRows}`;
 
 // Add an event listener to change the class for every square.
 let squares = document.querySelectorAll('.grid-square');
@@ -31,23 +31,23 @@ squares.forEach(square => {
 });
 
 let btnContainer = document.querySelector('.button-container');
-let numSidesBtn = document.createElement('button');
 
-numSidesBtn.textContent = 'Enter Number of Sides';
-btnContainer.appendChild(numSidesBtn);
+let gridSizeBtn = document.createElement('button');
+gridSizeBtn.textContent = 'Change Grid Size';
+btnContainer.appendChild(gridSizeBtn);
 
-numSidesBtn.addEventListener('click', () => {
-    let userSides = +prompt('How many sides wud u Like?', '16');
+gridSizeBtn.addEventListener('click', () => {
+    let userSides = +prompt('How many sides wud u Like?');
 
     if (userSides > 100) {
         alert('The maximum limit is 100! Please enter a value that is not past 100');
-    }else if (userSides < 1){
-        alert('The minimum limit is 1! Please enter a value that is not less than 1');
-    }else{
+    }else if (userSides < 0){
+        alert('The minimum limit is 1! Please enter a value that isn\'t less than 1');
+    }else if(userSides > 0 && userSides <= 100){
     divContainer.innerHTML = '';
     let numRows=numColumns=userSides;
     createGrid(numColumns, numRows);
-    displaySides.textContent = `GRID: ${numColumns} * ${numRows}`;
+    displaySides.textContent = `GRID: ${numColumns} x ${numRows}`;
     }
     
     let squares = document.querySelectorAll('.grid-square');
@@ -58,6 +58,7 @@ numSidesBtn.addEventListener('click', () => {
     });  
 })
 
+// A button to randomize color in each square
 let randomRgbBtn = document.createElement('button');
 randomRgbBtn.textContent = 'Randomize Color';
 btnContainer.appendChild(randomRgbBtn);
